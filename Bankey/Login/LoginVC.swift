@@ -44,7 +44,7 @@ extension LoginVC{
         errorlabel.textColor = .systemRed
         errorlabel.numberOfLines = 0
         errorlabel.isHidden = true
-        
+        //
         logoLabel.translatesAutoresizingMaskIntoConstraints = false
         logoLabel.textAlignment = .center
         logoLabel.text = "Bankey"
