@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginVCDelegate: AnyObject {
+    func didLogin()
+}
+
 class LoginVC: UIViewController {
     
     let loginView = LoginView()
@@ -21,10 +25,17 @@ class LoginVC: UIViewController {
         return loginView.passwordTextField.text
     }
     
+    weak var delegate: LoginVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        signinButton.configuration?.showsActivityIndicator = false  
     }
 }
 
@@ -48,6 +59,7 @@ extension LoginVC{
         logoLabel.translatesAutoresizingMaskIntoConstraints = false
         logoLabel.textAlignment = .center
         logoLabel.text = "Bankey"
+        logoLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         logoLabel.textColor = .black
         logoLabel.numberOfLines = 0
         
@@ -55,6 +67,7 @@ extension LoginVC{
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.textAlignment = .center
         descriptionLabel.text = "Your premium source for all things banking"
+        descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)
         descriptionLabel.textColor = .black
         descriptionLabel.numberOfLines = 0
     }
@@ -91,7 +104,7 @@ extension LoginVC{
         
 //       Description Label
         NSLayoutConstraint.activate([
-            loginView.topAnchor.constraint(equalToSystemSpacingBelow: descriptionLabel.bottomAnchor, multiplier: 4),
+            loginView.topAnchor.constraint(equalToSystemSpacingBelow: descriptionLabel.bottomAnchor, multiplier: 10),
             descriptionLabel.leadingAnchor.constraint(equalTo: signinButton.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: signinButton.trailingAnchor)
         ])
@@ -122,6 +135,7 @@ extension LoginVC{
         
         if username == "Kevin" && password == "welcome"{
             signinButton.configuration?.showsActivityIndicator = true
+            delegate?.didLogin()
         }else{
             errorlabel.isHidden = false
             errorlabel.text = "Username/Password is not correct"
