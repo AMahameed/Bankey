@@ -129,7 +129,7 @@ extension LoginVC{
         
         guard let username = username, let password = password, !username.isEmpty, !password.isEmpty else {
             errorlabel.isHidden = false
-            errorlabel.text = "Username/Password is not correct"
+            errorlabel.text = "Username or Password is not correct"
             return
         }
         
@@ -138,7 +138,7 @@ extension LoginVC{
             delegate?.didLogin()
         }else{
             errorlabel.isHidden = false
-            errorlabel.text = "Username/Password is not correct"
+            errorlabel.text = "Username or Password is not correct"
         }
         
     }

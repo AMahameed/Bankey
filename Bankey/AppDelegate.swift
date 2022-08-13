@@ -7,6 +7,8 @@
 
 import UIKit
 
+let appColor: UIColor = .systemTeal
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -14,14 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let loginVC = LoginVC()
     let onboardingContainerVC = OnboardingContainerVC()
     let dummyVC = DummyVC()
+    let mainVC = MainVC()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = loginVC
+        window?.rootViewController = mainVC
+        mainVC.selectedIndex = 1 // it tells the mainVC that choose the tab that has the Tag = 1
         loginVC.delegate = self
-//        window?.rootViewController = onboardingContainerVC
         onboardingContainerVC.delegate = self
         dummyVC.delegate = self
         return true

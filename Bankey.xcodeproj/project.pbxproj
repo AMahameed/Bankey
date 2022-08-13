@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7308EB5528A7F37E0022139C /* UIVC+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308EB5428A7F37E0022139C /* UIVC+Utils.swift */; };
+		7308EB5728A7F4640022139C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308EB5628A7F4640022139C /* MainVC.swift */; };
 		7316DD80289DE4280097417E /* OnboardingContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316DD7F289DE4280097417E /* OnboardingContainerVC.swift */; };
 		7316DD82289DEDCE0097417E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316DD81289DEDCE0097417E /* OnboardingView.swift */; };
 		736C18B028725FFD00963834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736C18AF28725FFD00963834 /* AppDelegate.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7308EB5428A7F37E0022139C /* UIVC+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVC+Utils.swift"; sourceTree = "<group>"; };
+		7308EB5628A7F4640022139C /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7316DD7F289DE4280097417E /* OnboardingContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerVC.swift; sourceTree = "<group>"; };
 		7316DD81289DEDCE0097417E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		736C18AC28725FFD00963834 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,10 +76,11 @@
 			isa = PBXGroup;
 			children = (
 				736C18AF28725FFD00963834 /* AppDelegate.swift */,
-				73FBFFC3289F2A650072AED1 /* Utils */,
-				7316DD7E289DE3E00097417E /* Onboarding */,
 				736C18C42872668800963834 /* Login */,
+				7316DD7E289DE3E00097417E /* Onboarding */,
+				73FBFFC3289F2A650072AED1 /* Utils */,
 				736C18C32872664A00963834 /* Files */,
+				7308EB5628A7F4640022139C /* MainVC.swift */,
 			);
 			path = Bankey;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				73FBFFC4289F2A7A0072AED1 /* LocalState.swift */,
+				7308EB5428A7F37E0022139C /* UIVC+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -182,8 +188,10 @@
 				73FBFFC5289F2A7A0072AED1 /* LocalState.swift in Sources */,
 				73FBFFC2289F20730072AED1 /* DummyVC.swift in Sources */,
 				7316DD80289DE4280097417E /* OnboardingContainerVC.swift in Sources */,
+				7308EB5728A7F4640022139C /* MainVC.swift in Sources */,
 				736C18B428725FFD00963834 /* LoginVC.swift in Sources */,
 				7316DD82289DEDCE0097417E /* OnboardingView.swift in Sources */,
+				7308EB5528A7F37E0022139C /* UIVC+Utils.swift in Sources */,
 				736C18B028725FFD00963834 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

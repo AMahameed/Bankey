@@ -57,7 +57,7 @@ class OnboardingContainerVC: UIViewController {
     }
     
     private func setup() {
-        view.backgroundColor = .systemPurple
+        view.backgroundColor = .systemPurple // Parent background color
         
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
@@ -73,7 +73,7 @@ class OnboardingContainerVC: UIViewController {
             view.bottomAnchor.constraint(equalTo: pageViewController.view.bottomAnchor),
         ])
         
-        pageViewController.setViewControllers([pages.first!], direction: .forward, animated: false, completion: nil)
+        pageViewController.setViewControllers([pages.first!], direction: .forward, animated: true, completion: nil)
         currentVC = pages.first!
     }
     
@@ -114,7 +114,6 @@ class OnboardingContainerVC: UIViewController {
 
 // MARK: - UIPageViewControllerDataSource
 extension OnboardingContainerVC: UIPageViewControllerDataSource {
-
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         return getPreviousViewController(from: viewController)
     }
