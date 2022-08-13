@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = mainVC
+        window?.rootViewController = AccountSummaryVC()
         mainVC.selectedIndex = 1 // it tells the mainVC that choose the tab that has the Tag = 1
         loginVC.delegate = self
         onboardingContainerVC.delegate = self

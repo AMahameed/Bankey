@@ -12,18 +12,19 @@ class AccountSummaryVC: UIViewController {
     let games = [
         "Pacman",
         "Space Invaders",
-        "Space Patrol",
-    ]
+        "Space Patrol"]
     
     var tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupTableHeaderView()
     }
 }
 
 extension AccountSummaryVC{
+    
     private func setup() {
         setupTableView()
     }
@@ -41,6 +42,16 @@ extension AccountSummaryVC{
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+
+    private func setupTableHeaderView() {
+        let header = AccountSummaryHeaderView(frame: .zero)
+        
+        var size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        size.width = UIScreen.main.bounds.width
+        header.frame.size = size
+        
+        tableView.tableHeaderView = header
     }
 }
 
