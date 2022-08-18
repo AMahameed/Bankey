@@ -15,6 +15,8 @@
 		7316DD80289DE4280097417E /* OnboardingContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316DD7F289DE4280097417E /* OnboardingContainerVC.swift */; };
 		7316DD82289DEDCE0097417E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316DD81289DEDCE0097417E /* OnboardingView.swift */; };
 		7332BCE928AEB59900CBDE60 /* AccountSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332BCE828AEB59900CBDE60 /* AccountSummaryCell.swift */; };
+		7332BCEB28AED2CC00CBDE60 /* DecimalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332BCEA28AED2CC00CBDE60 /* DecimalUtils.swift */; };
+		7332BCED28AED32100CBDE60 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332BCEC28AED32100CBDE60 /* CurrencyFormatter.swift */; };
 		736C18B028725FFD00963834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736C18AF28725FFD00963834 /* AppDelegate.swift */; };
 		736C18B428725FFD00963834 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736C18B328725FFD00963834 /* LoginVC.swift */; };
 		736C18B928725FFE00963834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 736C18B828725FFE00963834 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		7316DD7F289DE4280097417E /* OnboardingContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerVC.swift; sourceTree = "<group>"; };
 		7316DD81289DEDCE0097417E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		7332BCE828AEB59900CBDE60 /* AccountSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryCell.swift; sourceTree = "<group>"; };
+		7332BCEA28AED2CC00CBDE60 /* DecimalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalUtils.swift; sourceTree = "<group>"; };
+		7332BCEC28AED32100CBDE60 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		736C18AC28725FFD00963834 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		736C18AF28725FFD00963834 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		736C18B328725FFD00963834 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 			children = (
 				73FBFFC4289F2A7A0072AED1 /* LocalState.swift */,
 				7308EB5428A7F37E0022139C /* UIVC+Utils.swift */,
+				7332BCEA28AED2CC00CBDE60 /* DecimalUtils.swift */,
+				7332BCEC28AED32100CBDE60 /* CurrencyFormatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -226,6 +232,8 @@
 				73FBFFC2289F20730072AED1 /* DummyVC.swift in Sources */,
 				7308EB5C28A8055A0022139C /* AccountSummaryHeaderView.swift in Sources */,
 				7316DD80289DE4280097417E /* OnboardingContainerVC.swift in Sources */,
+				7332BCED28AED32100CBDE60 /* CurrencyFormatter.swift in Sources */,
+				7332BCEB28AED2CC00CBDE60 /* DecimalUtils.swift in Sources */,
 				7308EB5728A7F4640022139C /* MainVC.swift in Sources */,
 				7332BCE928AEB59900CBDE60 /* AccountSummaryCell.swift in Sources */,
 				736C18B428725FFD00963834 /* LoginVC.swift in Sources */,
