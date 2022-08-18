@@ -32,6 +32,7 @@ class AccountSummaryHeaderView: UIView {
         contentView.backgroundColor = appColor
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        
         contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true

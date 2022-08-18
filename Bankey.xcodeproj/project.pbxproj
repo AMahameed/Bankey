@@ -14,6 +14,7 @@
 		7308EB5E28A805A60022139C /* AccountSummaryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7308EB5D28A805A60022139C /* AccountSummaryHeaderView.xib */; };
 		7316DD80289DE4280097417E /* OnboardingContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316DD7F289DE4280097417E /* OnboardingContainerVC.swift */; };
 		7316DD82289DEDCE0097417E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316DD81289DEDCE0097417E /* OnboardingView.swift */; };
+		7332BCE928AEB59900CBDE60 /* AccountSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332BCE828AEB59900CBDE60 /* AccountSummaryCell.swift */; };
 		736C18B028725FFD00963834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736C18AF28725FFD00963834 /* AppDelegate.swift */; };
 		736C18B428725FFD00963834 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736C18B328725FFD00963834 /* LoginVC.swift */; };
 		736C18B928725FFE00963834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 736C18B828725FFE00963834 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		7308EB5D28A805A60022139C /* AccountSummaryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSummaryHeaderView.xib; sourceTree = "<group>"; };
 		7316DD7F289DE4280097417E /* OnboardingContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerVC.swift; sourceTree = "<group>"; };
 		7316DD81289DEDCE0097417E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		7332BCE828AEB59900CBDE60 /* AccountSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryCell.swift; sourceTree = "<group>"; };
 		736C18AC28725FFD00963834 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		736C18AF28725FFD00963834 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		736C18B328725FFD00963834 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -57,8 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				7308EB5928A800980022139C /* AccountSummaryVC.swift */,
-				7308EB5B28A8055A0022139C /* AccountSummaryHeaderView.swift */,
-				7308EB5D28A805A60022139C /* AccountSummaryHeaderView.xib */,
+				7332BCE628AEB54C00CBDE60 /* Header */,
+				7332BCE728AEB56800CBDE60 /* Cell */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -70,6 +72,23 @@
 				7316DD81289DEDCE0097417E /* OnboardingView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		7332BCE628AEB54C00CBDE60 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				7308EB5B28A8055A0022139C /* AccountSummaryHeaderView.swift */,
+				7308EB5D28A805A60022139C /* AccountSummaryHeaderView.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		7332BCE728AEB56800CBDE60 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7332BCE828AEB59900CBDE60 /* AccountSummaryCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		736C18A328725FFD00963834 = {
@@ -208,6 +227,7 @@
 				7308EB5C28A8055A0022139C /* AccountSummaryHeaderView.swift in Sources */,
 				7316DD80289DE4280097417E /* OnboardingContainerVC.swift in Sources */,
 				7308EB5728A7F4640022139C /* MainVC.swift in Sources */,
+				7332BCE928AEB59900CBDE60 /* AccountSummaryCell.swift in Sources */,
 				736C18B428725FFD00963834 /* LoginVC.swift in Sources */,
 				7316DD82289DEDCE0097417E /* OnboardingView.swift in Sources */,
 				7308EB5528A7F37E0022139C /* UIVC+Utils.swift in Sources */,
