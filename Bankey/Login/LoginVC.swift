@@ -28,7 +28,7 @@ class LoginVC: UIViewController {
     // animation
     var leadingEdgeOnScreen: CGFloat = 16
     var leadingEdgeOffScreen: CGFloat = -1000
-
+    
     var logoLabelLeadingAnchor: NSLayoutConstraint?
     var descriptionLabelLeadingAnchor: NSLayoutConstraint?
     
@@ -47,7 +47,7 @@ class LoginVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        signinButton.configuration?.showsActivityIndicator = false  
+        signinButton.configuration?.showsActivityIndicator = false
     }
     
 }
@@ -95,29 +95,29 @@ extension LoginVC{
         view.addSubview(logoLabel)
         
         
-    
-//       Login View
+        
+        //       Login View
         NSLayoutConstraint.activate([
             loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             loginView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 2)
         ])
         
-//       Button
+        //       Button
         NSLayoutConstraint.activate([
             signinButton.topAnchor.constraint(equalToSystemSpacingBelow: loginView.bottomAnchor, multiplier: 4),
             signinButton.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
             signinButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
         ])
         
-//       Error Label
+        //       Error Label
         NSLayoutConstraint.activate([
             errorlabel.topAnchor.constraint(equalToSystemSpacingBelow: signinButton.bottomAnchor, multiplier: 2),
             errorlabel.leadingAnchor.constraint(equalTo: signinButton.leadingAnchor),
             errorlabel.trailingAnchor.constraint(equalTo: signinButton.trailingAnchor)
         ])
         
-//       Description Label
+        //       Description Label
         NSLayoutConstraint.activate([
             loginView.topAnchor.constraint(equalToSystemSpacingBelow: descriptionLabel.bottomAnchor, multiplier: 10),
             descriptionLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
@@ -125,7 +125,7 @@ extension LoginVC{
         descriptionLabelLeadingAnchor = descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingEdgeOffScreen)
         descriptionLabelLeadingAnchor?.isActive = true
         
-//       Logo Label
+        //       Logo Label
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalToSystemSpacingBelow: logoLabel.bottomAnchor, multiplier: 3),
             logoLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
@@ -146,19 +146,33 @@ extension LoginVC{
     private func login() {
         
         guard let username = username, let password = password, !username.isEmpty, !password.isEmpty else {
-            errorlabel.isHidden = false
-            errorlabel.text = "Username or Password is not correct"
+            configureView(withMessage: "Username / password cannot be blank")
             return
         }
         
-        if username == "Kevin" && password == "welcome"{
+        if username == "Flynn" && password == "Welcome" {
             signinButton.configuration?.showsActivityIndicator = true
             delegate?.didLogin()
-        }else{
-            errorlabel.isHidden = false
-            errorlabel.text = "Username or Password is not correct"
+        } else {
+            configureView(withMessage: "Incorrect username / password")
         }
+    }
+    
+    private func configureView(withMessage message: String) {
+        errorlabel.isHidden = false
+        errorlabel.text = message
+        shakeButton()
+    }
+    
+    private func shakeButton() {
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "position.x"
+        animation.values = [0, 10, -10, 10, 0]
+        animation.keyTimes = [0, 0.16, 0.5, 0.83, 1]
+        animation.duration = 0.3
         
+        animation.isAdditive = true
+        signinButton.layer.add(animation, forKey: "shake")
     }
 }
 
