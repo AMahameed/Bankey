@@ -25,6 +25,13 @@ class LoginVC: UIViewController {
         return loginView.passwordTextField.text
     }
     
+    // animation
+    var leadingEdgeOnScreen: CGFloat = 16
+    var leadingEdgeOffScreen: CGFloat = -1000
+
+    var logoLabelLeadingAnchor: NSLayoutConstraint?
+    var descriptionLabelLeadingAnchor: NSLayoutConstraint?
+    
     weak var delegate: LoginVCDelegate?
     
     override func viewDidLoad() {
@@ -33,10 +40,16 @@ class LoginVC: UIViewController {
         layout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animate()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         signinButton.configuration?.showsActivityIndicator = false  
     }
+    
 }
 
 extension LoginVC{
@@ -62,6 +75,7 @@ extension LoginVC{
         logoLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         logoLabel.textColor = .black
         logoLabel.numberOfLines = 0
+        logoLabel.alpha = 0
         
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +84,7 @@ extension LoginVC{
         descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)
         descriptionLabel.textColor = .black
         descriptionLabel.numberOfLines = 0
+        descriptionLabel.alpha = 0
     }
     
     private func layout() {
@@ -105,16 +120,19 @@ extension LoginVC{
 //       Description Label
         NSLayoutConstraint.activate([
             loginView.topAnchor.constraint(equalToSystemSpacingBelow: descriptionLabel.bottomAnchor, multiplier: 10),
-            descriptionLabel.leadingAnchor.constraint(equalTo: signinButton.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: signinButton.trailingAnchor)
+            descriptionLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
         ])
+        descriptionLabelLeadingAnchor = descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingEdgeOffScreen)
+        descriptionLabelLeadingAnchor?.isActive = true
         
 //       Logo Label
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalToSystemSpacingBelow: logoLabel.bottomAnchor, multiplier: 2),
-            logoLabel.leadingAnchor.constraint(equalTo: signinButton.leadingAnchor),
-            logoLabel.trailingAnchor.constraint(equalTo: signinButton.trailingAnchor)
+            descriptionLabel.topAnchor.constraint(equalToSystemSpacingBelow: logoLabel.bottomAnchor, multiplier: 3),
+            logoLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
         ])
+        
+        logoLabelLeadingAnchor = logoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingEdgeOffScreen)
+        logoLabelLeadingAnchor?.isActive = true
     }
 }
 
@@ -141,5 +159,31 @@ extension LoginVC{
             errorlabel.text = "Username or Password is not correct"
         }
         
+    }
+}
+
+// MARK: - Animations
+extension LoginVC {
+    private func animate() {
+        
+        let duration = 1.0
+        
+        let animator1 = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
+            self.logoLabelLeadingAnchor?.constant = self.leadingEdgeOnScreen
+            self.view.layoutIfNeeded() // needed to notify the autolayout that we have changed the view to update it
+        }
+        let animator2 = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
+            self.descriptionLabelLeadingAnchor?.constant = self.leadingEdgeOnScreen
+            self.view.layoutIfNeeded()
+        }
+        let animator3 = UIViewPropertyAnimator(duration: duration*2, curve: .easeInOut) {
+            self.logoLabel.alpha = 1
+            self.descriptionLabel.alpha = 1
+        }
+        
+        
+        animator1.startAnimation()
+        animator2.startAnimation(afterDelay: 0.3)
+        animator3.startAnimation(afterDelay: 0.3)
     }
 }
