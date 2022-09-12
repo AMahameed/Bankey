@@ -26,38 +26,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginVC.delegate = self
         onboardingContainerVC.delegate = self
         
-        mainVC.setStatusBar()
-    
-        UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().backgroundColor = appColor
-        
-        window?.rootViewController = mainVC
+        displayLogin()
         return true
     }
-}
-
-extension AppDelegate: LoginVCDelegate{
-    func didLogin() {
-        if LocalState.shared.hasOnboarded{ // reads to user defaults
+    
+    private func displayLogin() {
+        setRootViewController(loginVC)
+    }
+    
+    private func displayNextScreen() {
+        if LocalState.shared.hasOnboarded {
+            prepMainView()
             setRootViewController(mainVC)
-        }else{
+        } else {
             setRootViewController(onboardingContainerVC)
         }
     }
-}
-
-extension AppDelegate: OnboardingContainerVCDelegate{
-    func didFinishOnboarding() {
-        LocalState.shared.hasOnboarded = true // sets to user defaults
-        setRootViewController(mainVC)
+    
+    private func prepMainView() {
+        mainVC.setStatusBar()
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = appColor
     }
 }
-
-//extension AppDelegate: DummyVCDelegate{
-//    func didLogout() {
-//        setRootViewController(loginVC)
-//    }
-//}
 
 extension AppDelegate{
     
@@ -77,3 +68,22 @@ extension AppDelegate{
                           completion: nil)
     }
 }
+
+extension AppDelegate: LoginVCDelegate {
+    func didLogin() {
+        displayNextScreen()
+    }
+}
+
+extension AppDelegate: OnboardingContainerVCDelegate {
+    func didFinishOnboarding() {
+        LocalState.shared.hasOnboarded = true
+        prepMainView()
+        setRootViewController(mainVC)
+    }
+}
+
+//extension AppDelegate: Lo {
+//    func didLogout() {
+//        setRootViewController(loginViewController)
+//    }
