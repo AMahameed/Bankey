@@ -36,6 +36,7 @@ class AccountSummaryCell: UITableViewCell {
     
     static let reuseID = "AccountSummaryCell"
     static let rowHeight: CGFloat = 112
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -141,13 +142,13 @@ extension AccountSummaryCell{
 }
 
 extension AccountSummaryCell{
-    func configure(with vm: ViewModel){
+    func configure(with account: ViewModel){
         
-        typeLabel.text = vm.accountType.rawValue
-        nameLabel.text = vm.accountName
-        balanceAmountLabel.attributedText = vm.balanceAsAttributedString
+        typeLabel.text = account.accountType.rawValue
+        nameLabel.text = account.accountName
+        balanceAmountLabel.attributedText = account.balanceAsAttributedString
         
-        switch vm.accountType {
+        switch account.accountType {
         case .Banking:
             divider.backgroundColor = appColor
             balanceLabel.text = "Current Balance"

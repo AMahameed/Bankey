@@ -29,6 +29,7 @@ class OnboardingContainerVC: UIViewController {
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
         let page1 = OnboardingView(heroImageName: "delorean", titleText: "Bankey is easier, faster to use, and has a brand new look and feel that will make you feel like you are back in the 1989.")
@@ -103,16 +104,15 @@ class OnboardingContainerVC: UIViewController {
     }
     
     @objc func closePressed(_ sender: UIButton) {
-        print("foo - closed")
         delegate?.didFinishOnboarding()
     }
     @objc func donePressed(_ sender: UIButton) {
-        print("foo - Done")
         delegate?.didFinishOnboarding()
     }
 }
 
 // MARK: - UIPageViewControllerDataSource
+
 extension OnboardingContainerVC: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         return getPreviousViewController(from: viewController)

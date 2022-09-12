@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let loginVC = LoginVC()
     let onboardingContainerVC = OnboardingContainerVC()
-    let dummyVC = DummyVC()
     let mainVC = MainVC()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -23,11 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = AccountSummaryVC()
-        mainVC.selectedIndex = 1 // it tells the mainVC that choose the tab that has the Tag = 1
+        
         loginVC.delegate = self
         onboardingContainerVC.delegate = self
-        dummyVC.delegate = self
+        
+        mainVC.setStatusBar()
+    
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = appColor
+        
+        window?.rootViewController = mainVC
         return true
     }
 }
@@ -35,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: LoginVCDelegate{
     func didLogin() {
         if LocalState.shared.hasOnboarded{ // reads to user defaults
-            setRootViewController(dummyVC)
+            setRootViewController(mainVC)
         }else{
             setRootViewController(onboardingContainerVC)
         }
@@ -45,15 +49,15 @@ extension AppDelegate: LoginVCDelegate{
 extension AppDelegate: OnboardingContainerVCDelegate{
     func didFinishOnboarding() {
         LocalState.shared.hasOnboarded = true // sets to user defaults
-        setRootViewController(dummyVC)
+        setRootViewController(mainVC)
     }
 }
 
-extension AppDelegate: DummyVCDelegate{
-    func didLogout() {
-        setRootViewController(loginVC)
-    }
-}
+//extension AppDelegate: DummyVCDelegate{
+//    func didLogout() {
+//        setRootViewController(loginVC)
+//    }
+//}
 
 extension AppDelegate{
     
