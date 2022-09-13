@@ -22,6 +22,7 @@
 		736C18B928725FFE00963834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 736C18B828725FFE00963834 /* Assets.xcassets */; };
 		736C18BC28725FFE00963834 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 736C18BA28725FFE00963834 /* LaunchScreen.storyboard */; };
 		736C18C6287267C900963834 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736C18C5287267C900963834 /* LoginView.swift */; };
+		73928DB928CFF957004E9BA9 /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73928DB828CFF957004E9BA9 /* ShakeyBellView.swift */; };
 		739D3E3328CFC20F00EEDC43 /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739D3E3228CFC20F00EEDC43 /* NSNotificationName.swift */; };
 		739D3E3528CFC6F600EEDC43 /* UITextFieldSecureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739D3E3428CFC6F600EEDC43 /* UITextFieldSecureToggle.swift */; };
 		73CB5DB628CF33B800E5CD66 /* CurrencyFormatterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CB5DB528CF33B800E5CD66 /* CurrencyFormatterTest.swift */; };
@@ -56,6 +57,7 @@
 		736C18BB28725FFE00963834 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		736C18BD28725FFE00963834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		736C18C5287267C900963834 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		73928DB828CFF957004E9BA9 /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 		739D3E3228CFC20F00EEDC43 /* NSNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationName.swift; sourceTree = "<group>"; };
 		739D3E3428CFC6F600EEDC43 /* UITextFieldSecureToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldSecureToggle.swift; sourceTree = "<group>"; };
 		73CB5DAC28CF331200E5CD66 /* BankeyUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankeyUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 				7316DD7E289DE3E00097417E /* Onboarding */,
 				7308EB5828A800740022139C /* AccountSummary */,
 				73FBFFC3289F2A650072AED1 /* Utils */,
+				73928DB728CFF924004E9BA9 /* Components */,
 				736C18C32872664A00963834 /* Files */,
 			);
 			path = Bankey;
@@ -166,6 +169,14 @@
 				736C18C5287267C900963834 /* LoginView.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		73928DB728CFF924004E9BA9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				73928DB828CFF957004E9BA9 /* ShakeyBellView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		73CB5DAD28CF331200E5CD66 /* BankeyUnitTests */ = {
@@ -305,6 +316,7 @@
 				7316DD82289DEDCE0097417E /* OnboardingView.swift in Sources */,
 				7308EB5528A7F37E0022139C /* UIVC+Utils.swift in Sources */,
 				736C18B028725FFD00963834 /* AppDelegate.swift in Sources */,
+				73928DB928CFF957004E9BA9 /* ShakeyBellView.swift in Sources */,
 				7308EB5A28A800980022139C /* AccountSummaryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

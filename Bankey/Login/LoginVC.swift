@@ -150,7 +150,7 @@ extension LoginVC{
             return
         }
         
-        if username == "Flynn" && password == "Welcome" {
+        if username == "Kevin" && password == "welcome" {
             signinButton.configuration?.showsActivityIndicator = true
             delegate?.didLogin()
         } else {
@@ -172,7 +172,7 @@ extension LoginVC{
         animation.duration = 0.3
         
         animation.isAdditive = true
-        signinButton.layer.add(animation, forKey: "shake")
+        signinButton.layer.add(animation, forKey: nil)
     }
 }
 
