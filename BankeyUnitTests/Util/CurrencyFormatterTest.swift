@@ -32,7 +32,7 @@ class Test: XCTestCase {
     
     func testZeroDollarsFormatted() throws{
         let result = formatter.dollarsFormatted(0)
-        XCTAssertEqual(result, "$0.00s")
+        XCTAssertEqual(result, "$0.00")
         
     }
 }
