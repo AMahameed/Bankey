@@ -12,13 +12,15 @@ class AccountSummaryVC: UIViewController {
     //Request Model
     var profile: Profile?
     var accounts: [Account] = []
-    // ViewModel
-    var headerViewModel = AccountSummaryHeaderView.ViewModel(welcomeMessage: "Welcome", name: "", date: Date())
     
+    //ViewModel
+    var headerViewModel = AccountSummaryHeaderView.ViewModel(welcomeMessage: "Welcome", name: "", date: Date())
     var accountCellViewModels: [AccountSummaryCell.ViewModel] = []
     
+    //Components
     var tableView = UITableView()
     var headerView = AccountSummaryHeaderView(frame: .zero)
+    let refreshControl = UIRefreshControl()
     
     lazy var logoutBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
@@ -28,19 +30,16 @@ class AccountSummaryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        
+        setupTableView()
         setupNavigationBar()
         setupTableHeaderView()
+        setupRefreshControl()
         fetchData()
     }
 }
 
 extension AccountSummaryVC{
-    
-    private func setup() {
-        setupTableView()
-        
-    }
     
     private func setupTableView() {
         tableView.delegate = self
@@ -73,11 +72,21 @@ extension AccountSummaryVC{
     func setupNavigationBar() {
         navigationItem.rightBarButtonItem = logoutBarButtonItem
     }
+    
+    func setupRefreshControl() {
+        refreshControl.tintColor = appColor
+        refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged )
+        tableView.refreshControl = refreshControl
+    }
 }
-
+// MARK: - Actions
 extension AccountSummaryVC {
     @objc func logoutTapped(sender: UIButton) {
         NotificationCenter.default.post(name: .logout, object: nil)
+    }
+    
+    @objc func refreshContent(){
+        fetchData()
     }
 }
 
@@ -135,6 +144,7 @@ extension AccountSummaryVC {
         }
         group.notify(queue: .main){
             self.tableView.reloadData() // only loads the tableView data after the 2 groups above completed
+            self.tableView.refreshControl?.endRefreshing()
         }
     }
     
