@@ -22,6 +22,8 @@ class AccountSummaryVC: UIViewController {
     var headerView = AccountSummaryHeaderView(frame: .zero)
     let refreshControl = UIRefreshControl()
     
+    var isLoaded: Bool = false
+    
     lazy var logoutBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
         barButtonItem.tintColor = .label
@@ -35,6 +37,7 @@ class AccountSummaryVC: UIViewController {
         setupNavigationBar()
         setupTableHeaderView()
         setupRefreshControl()
+        setupSkeleton()
         fetchData()
     }
 }
@@ -45,6 +48,7 @@ extension AccountSummaryVC{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.reuseID)
+        tableView.register(SkeletonCell.self, forCellReuseIdentifier: SkeletonCell.reuseID)
         tableView.rowHeight = AccountSummaryCell.rowHeight
         //        tableView.tableFooterView = UIView()
         tableView.backgroundColor = appColor
@@ -78,27 +82,29 @@ extension AccountSummaryVC{
         refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged )
         tableView.refreshControl = refreshControl
     }
-}
-// MARK: - Actions
-extension AccountSummaryVC {
-    @objc func logoutTapped(sender: UIButton) {
-        NotificationCenter.default.post(name: .logout, object: nil)
-    }
     
-    @objc func refreshContent(){
-        fetchData()
+    private func setupSkeleton(){
+        let row = Account.makeSkeleton()
+        accounts = Array(repeating: row, count: 10)
+        configureTableCells(with: accounts)
     }
 }
 
 extension AccountSummaryVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard !accountCellViewModels.isEmpty else{ return UITableViewCell()}
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.reuseID, for: indexPath) as! AccountSummaryCell
+        guard !accountCellViewModels.isEmpty else { return UITableViewCell() }
         let account = accountCellViewModels[indexPath.row]
-        cell.configure(with: account)
+        
+        if isLoaded {
+            let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.reuseID, for: indexPath) as! AccountSummaryCell
+            cell.configure(with: account)
+            
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: SkeletonCell.reuseID, for: indexPath) as! SkeletonCell
+        
         return cell
     }
     
@@ -110,6 +116,26 @@ extension AccountSummaryVC: UITableViewDataSource {
 extension AccountSummaryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+}
+
+// MARK: - Actions
+extension AccountSummaryVC {
+    @objc func logoutTapped(sender: UIButton) {
+        NotificationCenter.default.post(name: .logout, object: nil)
+    }
+    
+    @objc func refreshContent() {
+        reset()
+        setupSkeleton()
+        tableView.reloadData()
+        fetchData()
+    }
+    
+    private func reset() {
+        profile = nil
+        accounts = []
+        isLoaded = false
     }
 }
 
@@ -125,7 +151,7 @@ extension AccountSummaryVC {
                 print(error.localizedDescription)
             case .success(let profile):
                 self.profile = profile
-                self.configureTableHeaderView(with: profile)
+//                self.configureTableHeaderView(with: profile)
             }
             group.leave()
         }
@@ -138,13 +164,20 @@ extension AccountSummaryVC {
                 
             case .success(let accounts):
                 self.accounts = accounts
-                self.configureTableCells(with: accounts)
+//                self.configureTableCells(with: accounts)
             }
             group.leave()
         }
-        group.notify(queue: .main){
-            self.tableView.reloadData() // only loads the tableView data after the 2 groups above completed
+        
+        group.notify(queue: .main) {
             self.tableView.refreshControl?.endRefreshing()
+            
+            guard let profile = self.profile else { return }
+            
+            self.isLoaded = true
+            self.configureTableHeaderView(with: profile)
+            self.configureTableCells(with: self.accounts)
+            self.tableView.reloadData()// only loads the tableView data after the 2 groups above completed
         }
     }
     

@@ -11,6 +11,8 @@
 		7300DACA28D30FFF003495A0 /* AccountSummaryVC+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300DAC928D30FFF003495A0 /* AccountSummaryVC+Networking.swift */; };
 		7300DACE28D31C20003495A0 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300DACD28D31C20003495A0 /* ProfileTests.swift */; };
 		7300DAD028D31D03003495A0 /* AccountsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300DACF28D31D03003495A0 /* AccountsTest.swift */; };
+		7300DAD228D3382B003495A0 /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300DAD128D3382B003495A0 /* SkeletonLoadable.swift */; };
+		7300DAD428D338C4003495A0 /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300DAD328D338C4003495A0 /* SkeletonCell.swift */; };
 		7308EB5528A7F37E0022139C /* UIVC+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308EB5428A7F37E0022139C /* UIVC+Utils.swift */; };
 		7308EB5728A7F4640022139C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308EB5628A7F4640022139C /* MainVC.swift */; };
 		7308EB5A28A800980022139C /* AccountSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308EB5928A800980022139C /* AccountSummaryVC.swift */; };
@@ -48,6 +50,8 @@
 		7300DAC928D30FFF003495A0 /* AccountSummaryVC+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryVC+Networking.swift"; sourceTree = "<group>"; };
 		7300DACD28D31C20003495A0 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		7300DACF28D31D03003495A0 /* AccountsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTest.swift; sourceTree = "<group>"; };
+		7300DAD128D3382B003495A0 /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
+		7300DAD328D338C4003495A0 /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 		7308EB5428A7F37E0022139C /* UIVC+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVC+Utils.swift"; sourceTree = "<group>"; };
 		7308EB5628A7F4640022139C /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7308EB5928A800980022139C /* AccountSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryVC.swift; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				7332BCE828AEB59900CBDE60 /* AccountSummaryCell.swift */,
+				7300DAD128D3382B003495A0 /* SkeletonLoadable.swift */,
+				7300DAD328D338C4003495A0 /* SkeletonCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -340,6 +346,8 @@
 				739D3E3528CFC6F600EEDC43 /* UITextFieldSecureToggle.swift in Sources */,
 				7308EB5728A7F4640022139C /* MainVC.swift in Sources */,
 				7332BCE928AEB59900CBDE60 /* AccountSummaryCell.swift in Sources */,
+				7300DAD428D338C4003495A0 /* SkeletonCell.swift in Sources */,
+				7300DAD228D3382B003495A0 /* SkeletonLoadable.swift in Sources */,
 				739D3E3328CFC20F00EEDC43 /* NSNotificationName.swift in Sources */,
 				736C18B428725FFD00963834 /* LoginVC.swift in Sources */,
 				7316DD82289DEDCE0097417E /* OnboardingView.swift in Sources */,
