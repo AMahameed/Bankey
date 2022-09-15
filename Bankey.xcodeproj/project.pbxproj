@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7300DAC828D30CEC003495A0 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300DAC728D30CEC003495A0 /* Date+Utils.swift */; };
+		7300DACA28D30FFF003495A0 /* AccountSummaryVC+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300DAC928D30FFF003495A0 /* AccountSummaryVC+Networking.swift */; };
 		7308EB5528A7F37E0022139C /* UIVC+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308EB5428A7F37E0022139C /* UIVC+Utils.swift */; };
 		7308EB5728A7F4640022139C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308EB5628A7F4640022139C /* MainVC.swift */; };
 		7308EB5A28A800980022139C /* AccountSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308EB5928A800980022139C /* AccountSummaryVC.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7300DAC728D30CEC003495A0 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
+		7300DAC928D30FFF003495A0 /* AccountSummaryVC+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryVC+Networking.swift"; sourceTree = "<group>"; };
 		7308EB5428A7F37E0022139C /* UIVC+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVC+Utils.swift"; sourceTree = "<group>"; };
 		7308EB5628A7F4640022139C /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7308EB5928A800980022139C /* AccountSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryVC.swift; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				7308EB5928A800980022139C /* AccountSummaryVC.swift */,
+				7300DAC928D30FFF003495A0 /* AccountSummaryVC+Networking.swift */,
 				7332BCE628AEB54C00CBDE60 /* Header */,
 				7332BCE728AEB56800CBDE60 /* Cell */,
 			);
@@ -196,6 +201,7 @@
 				7332BCEA28AED2CC00CBDE60 /* Decimal+Utils.swift */,
 				7332BCEC28AED32100CBDE60 /* CurrencyFormatter.swift */,
 				739D3E3228CFC20F00EEDC43 /* NSNotificationName.swift */,
+				7300DAC728D30CEC003495A0 /* Date+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 				7316DD80289DE4280097417E /* OnboardingContainerVC.swift in Sources */,
 				7332BCED28AED32100CBDE60 /* CurrencyFormatter.swift in Sources */,
 				7332BCEB28AED2CC00CBDE60 /* Decimal+Utils.swift in Sources */,
+				7300DAC828D30CEC003495A0 /* Date+Utils.swift in Sources */,
 				739D3E3528CFC6F600EEDC43 /* UITextFieldSecureToggle.swift in Sources */,
 				7308EB5728A7F4640022139C /* MainVC.swift in Sources */,
 				7332BCE928AEB59900CBDE60 /* AccountSummaryCell.swift in Sources */,
@@ -316,6 +323,7 @@
 				7316DD82289DEDCE0097417E /* OnboardingView.swift in Sources */,
 				7308EB5528A7F37E0022139C /* UIVC+Utils.swift in Sources */,
 				736C18B028725FFD00963834 /* AppDelegate.swift in Sources */,
+				7300DACA28D30FFF003495A0 /* AccountSummaryVC+Networking.swift in Sources */,
 				73928DB928CFF957004E9BA9 /* ShakeyBellView.swift in Sources */,
 				7308EB5A28A800980022139C /* AccountSummaryVC.swift in Sources */,
 			);
