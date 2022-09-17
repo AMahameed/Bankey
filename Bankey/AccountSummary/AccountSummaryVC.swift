@@ -22,6 +22,9 @@ class AccountSummaryVC: UIViewController {
     var headerView = AccountSummaryHeaderView(frame: .zero)
     let refreshControl = UIRefreshControl()
     
+//    Networking
+    var profileManager: ProfileAndAccountsManageable = ProfileAndAccountsManager()
+    
     var isLoaded: Bool = false
     
     lazy var logoutBarButtonItem: UIBarButtonItem = {
@@ -145,7 +148,7 @@ extension AccountSummaryVC {
         let group = DispatchGroup()
         
         group.enter()
-        fetchProfile(forUserId: "1") { result in
+        profileManager.fetchProfile(forUserId: "1") { result in
             switch result{
             case .failure(let error):
                 self.displayError(error: error)
@@ -157,7 +160,7 @@ extension AccountSummaryVC {
         }
         
         group.enter()
-        fetchAccounts(forUserId: "1") { result in
+        profileManager.fetchAccounts(forUserId: "1") { result in
             switch result{
             case .failure(let error):
                 self.displayError(error: error)

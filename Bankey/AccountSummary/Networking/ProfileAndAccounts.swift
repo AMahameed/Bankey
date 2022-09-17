@@ -1,11 +1,17 @@
 //
-//  AccountSummaryVC+Networking.swift
+//  ProfileManager.swift
 //  Bankey
 //
-//  Created by Abdallah Mahameed on 15/09/2022.
+//  Created by Abdallah Mahameed on 17/09/2022.
 //
 
-import UIKit
+import Foundation
+
+protocol ProfileAndAccountsManageable: AnyObject {
+    func fetchProfile(forUserId userId: String, completion: @escaping (Result<Profile,NetworkError>) -> Void)
+    
+    func fetchAccounts(forUserId userId: String, completion: @escaping (Result<[Account],NetworkError>) -> Void) 
+}
 
 enum NetworkError: Error {
     case serverError
@@ -23,8 +29,20 @@ struct Profile: Codable {
         case lastName = "last_name"
     }
 }
+    
+    struct Account: Codable {
+        let id: String
+        let type: AccountType
+        let name: String
+        let amount: Decimal
+        let createdDateTime: Date
+        
+        static func makeSkeleton() -> Account {
+            return Account(id: "1", type: .Banking, name: "Account name", amount: 0.0, createdDateTime: Date())
+        }
+    }
 
-extension AccountSummaryVC {
+class ProfileAndAccountsManager: ProfileAndAccountsManageable {
     func fetchProfile(forUserId userId: String, completion: @escaping (Result<Profile,NetworkError>) -> Void) {
         let url = URL(string: "https://fierce-retreat-36855.herokuapp.com/bankey/profile/\(userId)")!
 
@@ -45,21 +63,7 @@ extension AccountSummaryVC {
 
         }.resume()
     }
-}
-
-struct Account: Codable {
-    let id: String
-    let type: AccountType
-    let name: String
-    let amount: Decimal
-    let createdDateTime: Date
     
-    static func makeSkeleton() -> Account {
-            return Account(id: "1", type: .Banking, name: "Account name", amount: 0.0, createdDateTime: Date())
-        }
-}
-
-extension AccountSummaryVC {
     func fetchAccounts(forUserId userId: String, completion: @escaping (Result<[Account],NetworkError>) -> Void) {
         let url = URL(string: "https://fierce-retreat-36855.herokuapp.com/bankey/profile/\(userId)/accounts")!
 
