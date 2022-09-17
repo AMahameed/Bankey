@@ -148,7 +148,7 @@ extension AccountSummaryVC {
         fetchProfile(forUserId: "1") { result in
             switch result{
             case .failure(let error):
-                print(error.localizedDescription)
+                self.displayError(error: error)
             case .success(let profile):
                 self.profile = profile
 //                self.configureTableHeaderView(with: profile)
@@ -160,8 +160,7 @@ extension AccountSummaryVC {
         fetchAccounts(forUserId: "1") { result in
             switch result{
             case .failure(let error):
-                print(error.localizedDescription)
-                
+                self.displayError(error: error)
             case .success(let accounts):
                 self.accounts = accounts
 //                self.configureTableCells(with: accounts)
@@ -196,4 +195,29 @@ extension AccountSummaryVC {
                                                     date: Date())
         headerView.configure(viewModel: vm)
     }
+    
+    private func displayError(error: NetworkError){
+        let title: String
+        let body: String
+        switch error {
+        case .serverError:
+            title = "Server Error"
+            body = "Please check your network connectivity and try again."
+        case .decodingError:
+            title = "Decoding Error"
+            body = "We could not process your request. Please try again."
+        }
+        self.showErrorAlert(title: title, body: body)
+    }
+    
+    private func showErrorAlert(title: String, body: String) {
+        let alert = UIAlertController(title: title,
+                                      message: body,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
+
